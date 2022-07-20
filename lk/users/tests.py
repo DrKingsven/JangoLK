@@ -1,3 +1,5 @@
+from idlelib import debugger
+
 from django.test import TestCase
 import json
 import requests
@@ -6,8 +8,8 @@ import requests
 # data = {"Пользователь": "kirill", "Пароль": 79782825742
 # }
 
-# response = requests.get("http://Kirill:79782825742@192.168.1.10/taskmanager/hs/ExchangeSUZ/pass/?pass=79787507227")
-r = requests.get("http://Kirill:79782825742@192.168.1.10/taskmanager/hs/ExchangeSUZ/dokuments/?user=79787507227")
+r = requests.get("http://Kirill:@localhost/test_suz/ru/hs/ExchangeSUZ/clients/?user==55555555555")
+# r = requests.get("http://Kirill:79782825742@192.168.1.10/taskmanager/hs/ExchangeSUZ/dokuments/?user=79787507227")
 # r = requests.get("https://egorovegor.ru/wp-json/")
 
 

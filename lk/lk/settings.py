@@ -14,8 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import comment.apps
-import profiluser.apps
+import comment
+import profiluser  
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
