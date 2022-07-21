@@ -12,11 +12,15 @@ from django.views.decorators.csrf import csrf_exempt
 class СommentView(View):
     def post(self, request):
         post_body = json.loads(request.body)  # don't forget to import jsontitle = post_body.get('title')
-        data = post_body.get('data')
 
+        id = post_body.get('id')
+        refTasks = post_body.get('refUsers')
+        comment = post_body.get('comment')
 
         data = {
-            'data': data,
+            'id': id,
+            'refUsers': refTasks,
+            'comment': comment,
 
         }
 

@@ -18,16 +18,20 @@ class TaskView(View):
 
         post_body = json.loads(request.body)
 
-        data = post_body.get('data')
+        id = post_body.get('id')
+        refUsers = post_body.get('refUsers')
+        tasks = post_body.get('tasks')
 
         data = {
-            'data': data,
+            'id': id,
+            'refUsers': refUsers,
+            'tasks': tasks,
 
         }
 
         task_obj = Task.objects.create(**data)
         data = {
-            'message': f'New task object has been created with id {task_obj.id}'
+            'message': f'New task object has been created with id {task_obj}'
         }
         return JsonResponse(data, status=201)
 

@@ -12,11 +12,14 @@ class ProfiluserView(View):
     def post(self, request):
 
         post_body = json.loads(request.body)  # don't forget to import jsontitle = post_body.get('title')
-        data = post_body.get('data')
-
+        id = post_body.get('id')
+        refUsers = post_body.get('refUsers')
+        clients = post_body.get('clients')
 
         data = {
-            'data': data,
+            'id': id,
+            'refUsers': refUsers,
+            'clients': clients,
 
         }
 
