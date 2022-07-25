@@ -2,11 +2,12 @@
 #
 from django.contrib.sites import requests
 # from django.core.serializers import serialize
+from django.forms import model_to_dict
 from django.shortcuts import render
 # import json
 # from django.http import JsonResponse
 # from django.views import View
-from .models import Task
+
 # from django.utils.decorators import method_decorator
 # from django.views.decorators.csrf import csrf_exempt
 #
@@ -46,10 +47,47 @@ from .models import Task
 #         return JsonResponse(data)
 from rest_framework import generics
 
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from .serializers import TaskSerializer
 
+from .models import Task
 
-class TaskAPIView(generics.ListAPIView):
+
+class TaskAPIList(generics.ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+
+class TaskAPIUpdate(generics.UpdateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+
+class TaskAPICreate(generics.CreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+    # class TaskAPIView(APIView):
+    #     def get(self, request):
+    #         t = Task.objects.all()
+    #         return Response({'posts': TaskSerializer(t, many=True).data})
+    #
+    # def post(self, request):
+    #     serializer = TaskSerializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response({'post': serializer.data})
+    #
+    # def put(self, request, *args, **kwargs):
+    #     pk = kwargs.get("pk", None)
+    #     if not pk:
+    #         return Response({"error": "Метод добавить не валиден"})
+    #
+    #     try:
+    #         instance = Task.objects.get(pk=pk)
+    #     except:
+    #         return Response({"error": "Обьект не найден"})
+    #     serializer = TaskSerializer(data=request.data, instance=instance)
+    #     # serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response({"post": serializer.data})
